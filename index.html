@@ -6,153 +6,187 @@
     <title>Samuel la page fan officielle !</title>
     <link rel="icon" href="https://media.gettyimages.com/id/1237773138/photo/topshot-france-portrait-media.jpg?b=1&s=594x594&w=0&k=20&c=wwVknAxcI7dfAFezO1eApBcecO2nmxRKLU3wlwo4icY=" type="image/png">
     <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --accent-color: #ffa726;
+            --link-color: #29b6f6;
+            --card-bg: #1e1e1e;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #121212;
+            --accent-color: #fb8c00;
+            --link-color: #1e88e5;
+            --card-bg: #f5f5f5;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         h1 {
             text-align: center;
-            color: #ffa726;
+            color: var(--accent-color);
             font-size: 3em;
-            margin-top: 20px;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            margin: 20px;
         }
 
-        h2 {
+        .chapters {
             text-align: center;
-            color: #29b6f6;
-            margin-top: 10px;
+            margin: 20px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 600px;
-            background: #1e1e1e;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        ul li {
+        .chapters a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin: 0 10px;
             font-size: 1.2em;
-            margin: 10px 0;
-            padding: 10px;
-            border-bottom: 1px solid #333;
         }
 
-        ul li:last-child {
-            border-bottom: none;
+        .chapters a:hover {
+            text-decoration: underline;
         }
 
-        ol {
-            counter-reset: list;
-            padding: 0;
-            margin: 30px auto;
-            max-width: 800px;
-        }
-
-        ol li {
-            margin-bottom: 40px;
-            background: #1e1e1e;
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             padding: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            list-style: none;
-            position: relative;
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            transition: background-color 0.3s;
         }
 
-        ol li h3 {
-            margin: 0 0 10px;
-            color: #ffa726;
-            font-size: 1.5em;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        ol li h5 {
-            font-size: 1em;
-            line-height: 1.6em;
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
             margin-bottom: 15px;
         }
 
-        ol li img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 2px solid #ffa726;
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
         }
 
-        ol li a {
+        .card p {
+            font-size: 1em;
+            line-height: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .card a {
             display: inline-block;
-            margin-top: 15px;
             padding: 10px 15px;
-            color: #121212;
-            background-color: #ffa726;
+            color: var(--bg-color);
+            background-color: var(--accent-color);
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
-        ol li a:hover {
-            background-color: #fb8c00;
-            color: #ffffff;
+        .card a:hover {
+            background-color: var(--accent-color);
+            opacity: 0.9;
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            font-size: 1em;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 1000;
         }
 
         footer {
             text-align: center;
             padding: 15px;
-            margin-top: 30px;
-            background-color: #1e1e1e;
-            color: #e0e0e0;
+            background-color: var(--card-bg);
+            color: var(--text-color);
             font-size: 0.9em;
             border-top: 1px solid #333;
+            transition: background-color 0.3s;
         }
 
         footer a {
-            color: #29b6f6;
+            color: var(--link-color);
             text-decoration: none;
         }
 
         footer a:hover {
-            color: #64ffda;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Samuel Etienne le GOAT qu'il pense être !</h1>
-    <h2>Chapitre :</h2>
-    <ul>
-        <li>Samuel Etienne le Goat de sa génération</li>
-        <li>Samuel bientôt président</li>
-        <li>Samuel Etienne un Yakouza ?</li>
-    </ul>
+    <button id="theme-toggle">Mode Nuit</button>
 
-    <ol>
-        <li>
-            <h3>Samuel Etienne le Goat de sa génération</h3>
-            <h5>Samuel Etienne, c'est clairement un crack ! ...</h5>
-            <img src="https://focus.huffingtonpost.fr/2023/05/01/523/0/2781/1854/320/213/60/0/3521745_1682904365096-000-cm1ai.jpg">
-        </li>
-        <li>
+    <h1>Samuel Etienne - La page fan officielle</h1>
+
+    <div class="chapters">
+        <a href="#goat">Le Goat</a>
+        <a href="#president">Bientôt Président</a>
+        <a href="#yakuza">Un Yakuza ?</a>
+    </div>
+
+    <div class="content">
+        <div class="card" id="goat">
+            <img src="https://focus.huffingtonpost.fr/2023/05/01/523/0/2781/1854/320/213/60/0/3521745_1682904365096-000-cm1ai.jpg" alt="Samuel Etienne - Le Goat">
+            <h3>Samuel Etienne le Goat</h3>
+            <p>Samuel Etienne, c'est clairement un crack ! Découvrez pourquoi il est considéré comme le Goat de sa génération.</p>
+        </div>
+        <div class="card" id="president">
+            <img src="https://www.breakflip.com/uploads2/Azilliz/2021/Fevrier/Jeux/samuel-etienne-presidentielle-twitch.png" alt="Samuel président">
             <h3>Samuel bientôt président</h3>
-            <h5>Samuel Etienne pourrait être président grâce à sa capacité de communication claire...</h5>
-            <img src="https://www.breakflip.com/uploads2/Azilliz/2021/Fevrier/Jeux/samuel-etienne-presidentielle-twitch.png">
-        </li>
-        <li>
+            <p>Avec sa communication hors pair, Samuel pourrait facilement devenir le prochain président.</p>
+        </div>
+        <div class="card" id="yakuza">
+            <img src="https://cdn-www.konbini.com/files/2024/09/etienne-33.jpg?width=1080&quality=75&format=webp" alt="Samuel Yakuza">
             <h3>Samuel un Yakuza ?</h3>
-            <h5>Samuel Etienne est sans doute l’un des plus grands yakuza...</h5>
-            <img src="https://cdn-www.konbini.com/files/2024/09/etienne-33.jpg?width=1080&quality=75&format=webp">
-            <a href="https://www.tiktok.com/@samueletienneofficiel/video/7412388397286706465">Découvrez ici son témoignage de Yakouza</a>
-        </li>
-    </ol>
+            <p>Découvrez les théories fascinantes qui lient Samuel à la légendaire mafia japonaise.</p>
+            <a href="https://www.tiktok.com/@samueletienneofficiel/video/7412388397286706465">Voir son témoignage</a>
+        </div>
+    </div>
 
     <footer>
-        Site fait par : <a href="#">isco245 / Le R</a>.
+        Site fait par : <a href="#">isco245 / Le R</a>
     </footer>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                toggleButton.textContent = 'Mode Nuit';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                toggleButton.textContent = 'Mode Jour';
+            }
+        });
+    </script>
 </body>
 </html>
