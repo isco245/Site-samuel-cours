@@ -38,6 +38,12 @@
             margin: 20px;
         }
 
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+        }
+
         .chapters {
             text-align: center;
             margin: 20px;
@@ -55,10 +61,6 @@
         }
 
         .content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
             padding: 20px;
         }
 
@@ -67,7 +69,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             padding: 20px;
-            max-width: 300px;
+            margin-bottom: 20px;
             text-align: center;
             transition: background-color 0.3s;
         }
@@ -109,15 +111,32 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 10px 15px;
-            font-size: 1em;
-            background-color: var(--accent-color);
-            color: var(--bg-color);
+            background: none;
             border: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             z-index: 1000;
+        }
+
+        #theme-toggle img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .redirect-button {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            width: fit-content;
+        }
+
+        .redirect-button:hover {
+            opacity: 0.9;
         }
 
         footer {
@@ -141,9 +160,12 @@
     </style>
 </head>
 <body>
-    <button id="theme-toggle">Mode Nuit</button>
+    <button id="theme-toggle">
+        <img id="theme-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Circle-icons-sun.svg/1024px-Circle-icons-sun.svg.png" alt="Mode Jour">
+    </button>
 
     <h1>Samuel Etienne - La page fan officielle</h1>
+    <img class="logo" src="https://media.gettyimages.com/id/1237773138/photo/topshot-france-portrait-media.jpg?b=1&s=594x594&w=0&k=20&c=wwVknAxcI7dfAFezO1eApBcecO2nmxRKLU3wlwo4icY=" alt="Logo de la page">
 
     <div class="chapters">
         <a href="#goat">Le Goat</a>
@@ -170,21 +192,26 @@
         </div>
     </div>
 
+    <a class="redirect-button" href="2page.html">Vers la page suivante</a>
+
     <footer>
         Site fait par : <a href="#">isco245 / Le R</a>
     </footer>
 
     <script>
         const toggleButton = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
         const body = document.body;
 
         toggleButton.addEventListener('click', () => {
             if (body.getAttribute('data-theme') === 'light') {
                 body.setAttribute('data-theme', 'dark');
-                toggleButton.textContent = 'Mode Nuit';
+                themeIcon.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Circle-icons-moon.svg/1024px-Circle-icons-moon.svg.png";
+                themeIcon.alt = "Mode Nuit";
             } else {
                 body.setAttribute('data-theme', 'light');
-                toggleButton.textContent = 'Mode Jour';
+                themeIcon.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Circle-icons-sun.svg/1024px-Circle-icons-sun.svg.png";
+                themeIcon.alt = "Mode Jour";
             }
         });
     </script>
