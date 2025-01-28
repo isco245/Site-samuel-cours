@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samuel la page fan officielle !</title>
-    <link rel="icon" href="https://media.gettyimages.com/id/1237773138/photo/topshot-france-portrait-media.jpg?b=1&s=594x594&w=0&k=20&c=wwVknAxcI7dfAFezO1eApBcecO2nmxRKLU3wlwo4icY.png" type="image/png">
+    <link rel="icon" href="https://france3-regions.francetvinfo.fr/image/zxrylHW5h7elVwedXPxZyS9viUU/930x620/regions/2020/06/09/5ededfb91686b_samuel_etienne_qpuc.jpg" type="image/png">
     <style>
         :root {
             --bg-color: #ffffff;
@@ -38,12 +38,6 @@
             margin: 20px;
         }
 
-        .logo {
-            display: block;
-            margin: 0 auto;
-            width: 100px;
-        }
-
         .chapters {
             text-align: center;
             margin: 20px;
@@ -54,6 +48,7 @@
             text-decoration: none;
             margin: 0 10px;
             font-size: 1.2em;
+            cursor: pointer;
         }
 
         .chapters a:hover {
@@ -162,16 +157,15 @@
 </head>
 <body data-theme="light">
     <button id="theme-toggle">
-        <img id="theme-icon" src="https://cdn-icons-png.flaticon.com/512/6222/6222248.png" alt="Mode Jour">
+        <img id="theme-icon" src="https://cdn.iconscout.com/icon/free/png-256/free-moon-icon-download-in-svg-png-gif-file-formats--night-weather-climate-forecast-travels-pack-holidays-icons-1289406.png?f=webp&w=256" alt="Mode Jour">
     </button>
 
     <h1>Samuel Etienne - La page fan officielle</h1>
-    <img class="logo" src="https://media.gettyimages.com/id/1237773138/photo/topshot-france-portrait-media.jpg?b=1&s=594x594&w=0&k=20&c=wwVknAxcI7dfAFezO1eApBcecO2nmxRKLU3wlwo4icY.png" alt="Logo de la page">
 
     <div class="chapters">
-        <a href="#goat">Le Goat</a>
-        <a href="#president">Bientôt Président</a>
-        <a href="#yakuza">Un Yakuza ?</a>
+        <a onclick="scrollToSection('goat')">Le Goat</a>
+        <a onclick="scrollToSection('president')">Bientôt Président</a>
+        <a onclick="scrollToSection('yakuza')">Un Yakuza ?</a>
     </div>
 
     <div class="content">
@@ -189,11 +183,11 @@
             <img src="https://cdn-www.konbini.com/files/2024/09/etienne-33.jpg?width=1080&quality=75&format=webp" alt="Samuel Yakuza">
             <h3>Samuel un Yakuza ?</h3>
             <p>Découvrez les théories fascinantes qui lient Samuel à la légendaire mafia japonaise.</p>
-            <a href="https://www.tiktok.com/@samueletienneofficiel/video/7412388397286706465">Voir son témoignage</a>
+            <a href="https://www.tiktok.com/@samueletienneofficiel/video/7412388397286706465" target="_blank">Voir son témoignage</a>
         </div>
     </div>
 
-    <a class="redirect-button" href="2page.html">Page Suivante</a>
+    <a class="redirect-button" onclick="alert('La nouvelle page n\'est pas encore disponible. Veuillez revenir plus tard !')">Page Suivante</a>
 
     <footer>
         Site fait par : <a href="#">isco245 / Le R</a>
@@ -207,7 +201,7 @@
         toggleButton.addEventListener('click', () => {
             if (body.getAttribute('data-theme') === 'light') {
                 body.setAttribute('data-theme', 'dark');
-                themeIcon.src = "https://cdn-icons-png.flaticon.com/512/5812/5812270.png";
+                themeIcon.src = "https://cdn.iconscout.com/icon/free/png-256/free-moon-icon-download-in-svg-png-gif-file-formats--night-weather-climate-forecast-travels-pack-holidays-icons-1289406.png?f=webp&w=256";
                 themeIcon.alt = "Mode Nuit";
             } else {
                 body.setAttribute('data-theme', 'light');
@@ -215,6 +209,11 @@
                 themeIcon.alt = "Mode Jour";
             }
         });
+
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
