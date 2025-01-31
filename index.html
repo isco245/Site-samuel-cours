@@ -1,20 +1,246 @@
-const toggleButton = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-const body = document.body;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel la page fan officielle !</title>
+    <link rel="icon" href="https://france3-regions.francetvinfo.fr/image/zxrylHW5h7elVwedXPxZyS9viUU/930x620/regions/2020/06/09/5ededfb91686b_samuel_etienne_qpuc.jpg" type="image/png">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #121212;
+            --accent-color: #fb8c00;
+            --link-color: #1e88e5;
+            --card-bg: #f5f5f5;
+        }
 
-// Assurez que le thème clair est initialisé au chargement de la page
-body.setAttribute('data-theme', 'light');
-themeIcon.src = "https://cdn-icons-png.flaticon.com/512/6222/6222248.png";
-themeIcon.alt = "Mode Jour";
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --accent-color: #ffa726;
+            --link-color: #29b6f6;
+            --card-bg: #1e1e1e;
+        }
 
-toggleButton.addEventListener('click', () => {
-    if (body.getAttribute('data-theme') === 'light') {
-        body.setAttribute('data-theme', 'dark');
-        themeIcon.src = "https://cdn.iconscout.com/icon/free/png-256/free-moon-icon-download-in-svg-png-gif-file-formats--night-weather-climate-forecast-travels-pack-holidays-icons-1289406.png?f=webp&w=256";
-        themeIcon.alt = "Mode Nuit";
-    } else {
-        body.setAttribute('data-theme', 'light');
-        themeIcon.src = "https://cdn-icons-png.flaticon.com/512/6222/6222248.png";
-        themeIcon.alt = "Mode Jour";
-    }
-});
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            font-size: 3em;
+            margin: 20px;
+        }
+
+        .chapters {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .chapters a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .chapters a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            margin-bottom: 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1em;
+            line-height: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 10px 15px;
+            color: var(--bg-color);
+            background-color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .card a:hover {
+            background-color: var(--accent-color);
+            opacity: 0.9;
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #theme-toggle img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .redirect-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .redirect-button:hover {
+            opacity: 0.9;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            padding: 10px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1100;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            transition: background-color 0.3s;
+        }
+
+        footer a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <button id="theme-toggle">
+        <img id="theme-icon" src="https://cdn-icons-png.flaticon.com/512/6222/6222248.png" alt="Mode Jour">
+    </button>
+
+    <button id="back-to-top">⬆</button>
+
+    <h1>Samuel Etienne - La page fan officielle</h1>
+
+    <div class="chapters">
+        <a onclick="scrollToSection('goat')">Le Goat</a>
+        <a onclick="scrollToSection('president')">Bientôt Président</a>
+        <a onclick="scrollToSection('yakuza')">Un Yakuza ?</a>
+    </div>
+
+    <div class="content">
+        <div class="card" id="goat">
+            <img src="https://focus.huffingtonpost.fr/2023/05/01/523/0/2781/1854/320/213/60/0/3521745_1682904365096-000-cm1ai.jpg" alt="Samuel Etienne - Le Goat">
+            <h3>Samuel Etienne le Goat</h3>
+        </div>
+        <div class="card" id="president">
+            <img src="https://www.breakflip.com/uploads2/Azilliz/2021/Fevrier/Jeux/samuel-etienne-presidentielle-twitch.png" alt="Samuel président">
+            <h3>Samuel bientôt président</h3>
+        </div>
+        <div class="card" id="yakuza">
+            <img src="https://cdn-www.konbini.com/files/2024/09/etienne-33.jpg?width=1080&quality=75&format=webp" alt="Samuel Yakuza">
+            <h3>Samuel un Yakuza ?</h3>
+        </div>
+    </div>
+
+    <button class="redirect-button" id="next-page">Page Suivante</button>
+
+    <footer>
+        Site fait par : <a href="#">isco245 / Le R</a>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            const isLight = body.getAttribute('data-theme') === 'light';
+            body.setAttribute('data-theme', isLight ? 'dark' : 'light');
+            themeIcon.src = isLight
+                ? "https://cdn-icons-png.flaticon.com/512/702/702471.png" // Icône Lune en mode sombre
+                : "https://cdn-icons-png.flaticon.com/512/6222/6222248.png"; // Icône Soleil en mode jour
+        });
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('back-to-top').style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('next-page').addEventListener('click', () => {
+            alert("La nouvelle page n'est pas encore disponible !");
+        });
+    </script>
+</body>
+</html>
